@@ -79,12 +79,12 @@ class Ticket(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     row = models.IntegerField()
     seat = models.IntegerField()
-    data = movie_session.show_time.strftime("%Y-%m-%d %H:%M:%S")
 
     def __str__(self) -> str:  # ANN204 fixed
+        data = self.movie_session.show_time.strftime("%Y-%m-%d %H:%M:%S")
         return (
             f"{self.movie_session.movie.title} "
-            f"{self.data}"
+            f"{data}"
             f" (row: {self.row}, seat: {self.seat})"
         )
 
