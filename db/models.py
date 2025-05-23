@@ -29,7 +29,7 @@ class Movie(models.Model):
     def __str__(self) -> str:  # ANN204 fixed
         return self.title
 
-    class Mate:
+    class Meta:
         indexes = [Index(fields=["title"])]
 
 
@@ -68,7 +68,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:  # ANN204 fixed
-        return f"{self.created_at.strftime("%Y-%m-%d %H:%M:%S")}"
+        return self.created_at.strftime("%Y-%m-%d %H:%M:%S")
 
     class Meta:
         ordering = ["-created_at"]
